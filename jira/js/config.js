@@ -105,7 +105,7 @@ RuleConfig = function(id){
   this.defaultConfluence = {
     test_url : 'https://www.atlassian.com/software/confluence/enterprise/data-center?w46=1',
     test_title : 'CONFLUENCE Titles',
-    url_pattern : '(confluence|tickets)*',
+    url_pattern : 'confluence*',
     title_pattern : '^(.*)( -[^-]+)$',
     out_pattern : '$html:<a href="$url">$1</a>'
   }
