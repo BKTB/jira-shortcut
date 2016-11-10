@@ -5,6 +5,7 @@ function checkForValidUrl(tabId, changeInfo, tab) {
 }
 
 function prepareCopyContent(tab, callback){
+  chrome.tabs.sendMessage(tab.id, {text: 'get_parent_jira_issue'},
     function(parentIssue) {
       var data = BgConfig.apply(parentIssue, tab.url, tab.title);
       callback(data.join('<br>'));
