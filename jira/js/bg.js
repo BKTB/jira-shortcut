@@ -4,9 +4,12 @@ function checkForValidUrl(tabId, changeInfo, tab) {
   }
 }
 
-function prepareCopyContent(tab){
-  var data = BgConfig.apply(tab.url, tab.title);
-  return data.join('<br>');
+function prepareCopyContent(tab, callback){
+    function(parentIssue) {
+      var data = BgConfig.apply(parentIssue, tab.url, tab.title);
+      callback(data.join('<br>'));
+    }
+  );
 }
 
 function init(){

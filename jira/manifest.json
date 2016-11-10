@@ -1,8 +1,14 @@
 {
-  "name": "JIRA ShortCut",
+  "name": "JIRA ShortCut - BKTB",
   "version": "5.0.2",
   "manifest_version": 2,
   "description": "Copy to clip board jira issue as 'CMD-999: Description'",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["js/content.js"]
+    }
+  ],
   "background": {
     "scripts": [ "js/config.js","js/bg.js"]
   },

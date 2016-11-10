@@ -17,5 +17,7 @@ function doCopy(data) {
 var bg = chrome.extension.getBackgroundPage();
 
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  doCopy(bg.prepareCopyContent(tabs[0]));
+  bg.prepareCopyContent(tabs[0], function(data) {
+    doCopy(data);
+  });
 })

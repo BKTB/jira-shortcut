@@ -70,8 +70,10 @@ BgConfig = {
     BgConfig.rules = rules;
   },
 
-  apply: function(url, title) {
+  apply: function(parentIssue, url, title) {
     var result = [];
+    if (parentIssue) result.push(parentIssue)
+
     for(var i in BgConfig.rules) {
       var rule = BgConfig.rules[i];
       if (rule.match(url)){
