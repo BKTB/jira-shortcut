@@ -17,7 +17,9 @@ var Rule = function (rootNode, config) {
   this.buttons = {
     save : this.element("save"),
     load : this.element("load"),
-    reset : this.element("reset"),
+    resetJira : this.element("resetJira"),
+    resetConfluence: this.element("resetConfluence"),
+    reset: this.element("reset"),
     remove : this.element("remove")
   };
 
@@ -39,6 +41,24 @@ var Rule = function (rootNode, config) {
     }
     this.update_outputs();
   }
+
+
+  this.resetJira = function() {
+    this.config.resetJira();
+    for (var field in this.fields) {
+      this.fields[field].value = this.config.get(field)
+    }
+    this.update_outputs();
+  }
+
+  this.resetConfluence = function() {
+    this.config.resetConfluence();
+    for (var field in this.fields) {
+      this.fields[field].value = this.config.get(field)
+    }
+    this.update_outputs();
+  }
+
 
   this.save = function() {
     for (var field in this.fields) {

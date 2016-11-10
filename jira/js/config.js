@@ -87,12 +87,29 @@ BgConfig = {
 RuleConfig = function(id){
   this.id = id;
   this.defaults = {
+    test_url : '',
+    test_title : '',
+    url_pattern : '',
+    title_pattern : '',
+    out_pattern : ''
+  }
+
+  this.defaultJira = {
     test_url : 'https://issues.apache.org/jira/browse/HADOOP-3629',
     test_title : '[HADOOP-3629] Document the metrics produced by hadoop - JIRA',
     url_pattern : '(jira|tickets)*/browse/',
     title_pattern : '^\\[#?([^\\]]+)\\](.*)( -[^-]+)$',
     out_pattern : '$html:<a href="$url">$1:$2</a>'
   }
+
+  this.defaultConfluence = {
+    test_url : 'https://www.atlassian.com/software/confluence/enterprise/data-center?w46=1',
+    test_title : 'CONFLUENCE Titles',
+    url_pattern : '(confluence|tickets)*',
+    title_pattern : '^(.*)( -[^-]+)$',
+    out_pattern : '$html:<a href="$url">$1</a>'
+  }
+
   this.fields = {};
 
   this.init = function () {
@@ -106,8 +123,16 @@ RuleConfig = function(id){
     return this.fields[field];
   },
 
-  this.reset = function() {
+  this.reset = function(){
     this.fields = JSON.parse(JSON.stringify(this.defaults));
+  }
+
+  this.resetJira = function() {
+    this.fields = JSON.parse(JSON.stringify(this.defaultJira));
+  }
+
+  this.resetConfluence = function() {
+    this.fields = JSON.parse(JSON.stringify(this.defaultConfluence));
   }
 
   this.set = function(field, value){
