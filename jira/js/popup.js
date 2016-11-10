@@ -13,11 +13,15 @@ function doCopy(data) {
   obj.style.display = 'none'
 }
 
-
 var bg = chrome.extension.getBackgroundPage();
 
-chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  bg.prepareCopyContent(tabs[0], function(data) {
-    doCopy(data);
-  });
-})
+function run() {
+
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    bg.prepareCopyContent(tabs[0], function(data) {
+      doCopy(data);
+    });
+  })
+}
+
+run()
