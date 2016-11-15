@@ -1,8 +1,8 @@
 {
   "name": "JIRA ShortCut - BKTB",
-  "version": "1.0.0",
+  "version": "5.0.3",
   "manifest_version": 2,
-  "description": "Copy to clip board jira issue as 'CMD-999: Description'",
+  "description": "Copy to clip board Jira issue task-sub task title and Confluence issue title",
   "content_scripts": [
     {
       "matches": ["http://*/*"],
