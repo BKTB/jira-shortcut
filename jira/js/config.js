@@ -5,19 +5,6 @@ function escape_html(html){
 };
 
 Config = {
-  migrate_old_config: function() {
-    if (localStorage.getItem('pattern')){
-      var rule = new RuleConfig();
-      rule.set('test_url', "Please specify the Url"); // was not stored in 4.5.0
-      rule.set('test_title', localStorage['example_title']);
-      rule.set('url_pattern', localStorage['url_pattern']);
-      rule.set('title_pattern', localStorage['pattern']);
-      rule.set('out_pattern', localStorage['replacement']);
-      localStorage.clear();
-      rule.save();
-    }
-  },
-
   get: function(key){
     return localStorage.getItem(key);
   },
@@ -30,10 +17,11 @@ Config = {
     localStorage.removeItem(key);
   },
 
-  keys: function() {
+  keys: function () {
     var keys = [];
-    for(var key in localStorage) {
-      keys.push(key)
+    for (var key in localStorage) {
+      if (key.match(/^rule\_[0-9]*$/))
+        keys.push(key);
     }
     return keys.sort();
   },

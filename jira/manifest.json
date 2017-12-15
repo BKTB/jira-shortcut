@@ -1,11 +1,11 @@
 {
-  "name": "JIRA ShortCut - BKTB",
-  "version": "5.0.3",
+  "name": "JIRA ShortCut #2 - BKTB",
+  "version": "6.0.0",
   "manifest_version": 2,
-  "description": "Copy to clip board Jira issue task-sub task title and Confluence issue title",
+  "description": "JIRA ShortCut - BKTB that complies with Chrome 63 localStorage behavior change",
   "content_scripts": [
     {
-      "matches": ["http://*/*"],
+      "matches": ["*://*/*"],
       "js": ["js/content.js"]
     }
   ],
